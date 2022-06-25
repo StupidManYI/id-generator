@@ -1,0 +1,459 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.echao</groupId>
+    <artifactId>id-generator</artifactId>
+    <version>1.0.0</version>
+    <packaging>pom</packaging>
+
+    <name>carp</name>
+    <description>id-generator is project which contains id-generator
+    </description>
+
+    <url>https://github.com/rxyor/carp</url>
+
+
+    <!-- 统一管理jar包版本 -->
+    <properties>
+
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven.compiler.source>8</maven.compiler.source>
+        <maven.compiler.target>8</maven.compiler.target>
+        <junit.version>4.12</junit.version>
+        <log4j.version>1.2.17</log4j.version>
+        <lombok.version>1.18.22</lombok.version>
+        <mysql.version>8.0.17</mysql.version>
+        <druid.version>1.2.8</druid.version>
+        <mybatis.spring.boot.version>1.3.0</mybatis.spring.boot.version>
+        <mybatis-plus.spring.boot.version>3.2.0</mybatis-plus.spring.boot.version>
+        <fastjson.version>1.2.58</fastjson.version>
+        <java-jwt.version>3.10.3</java-jwt.version>
+        <spring-boot-dependencies.version>2.3.11.RELEASE</spring-boot-dependencies.version>
+        <spring-cloud-dependencies.version>Hoxton.SR11</spring-cloud-dependencies.version>
+        <springfox-swagger-ui.version>2.9.2</springfox-swagger-ui.version>
+        <springfox-swagger2.version>2.9.2</springfox-swagger2.version>
+        <swagger-bootstrap-ui-github.version>1.9.3</swagger-bootstrap-ui-github.version>
+        <spring-mobile-device.version>1.1.5.RELEASE</spring-mobile-device.version>
+        <spring-cloud-alibaba-dependencies.version>2.1.0.RELEASE</spring-cloud-alibaba-dependencies.version>
+        <commons-pool2.version>2.6.0</commons-pool2.version>
+        <java-mail.version>1.6.2</java-mail.version>
+        <lf4j-api.version>1.7.25</lf4j-api.version>
+        <commons-logging.version>1.2</commons-logging.version>
+        <protobuf-java.version>3.9.0</protobuf-java.version>
+        <netty-all.version>4.1.66.Final</netty-all.version>
+        <com.qcloud.cos_api.version>5.6.24</com.qcloud.cos_api.version>
+        <com.qcloud.cos-sts_api.version>3.1.0</com.qcloud.cos-sts_api.version>
+        <tencentcloud-sdk-java-version>3.1.363</tencentcloud-sdk-java-version>
+        <com.github.tobato-fastdfs-client>1.27.2</com.github.tobato-fastdfs-client>
+        <elasticsearch-rest-high-level-client>7.6.2</elasticsearch-rest-high-level-client>
+        <elasticsearch.version>7.6.2</elasticsearch.version>
+        <spring-data-elasticsearch.version>4.0.9.RELEASE</spring-data-elasticsearch.version>
+        <jetcache-starter-redis>2.5.9</jetcache-starter-redis>
+        <org.json.json>20210307</org.json.json>
+        <easy-captcha>1.6.2</easy-captcha>
+        <hystrix-core>1.5.18</hystrix-core>
+        <UserAgentUtils>1.20</UserAgentUtils>
+        <hutool-all>5.2.5</hutool-all>
+        <hutool-http>5.1.1</hutool-http>
+        <hutool-json>3.3.2</hutool-json>
+        <hutool-core>5.5.1</hutool-core>
+        <apache-common-beanutils>1.9.3</apache-common-beanutils>
+        <mapstruct>1.4.2.Final</mapstruct>
+        <curator.version>5.2.0</curator.version>
+        <dubbo.version>3.0.4</dubbo.version>
+        <sentinel.version>1.8.2</sentinel.version>
+        <jedis>4.0.1</jedis>
+        <libphonenumber>8.12.44</libphonenumber>
+        <dynamic-datasource-version>3.5.1</dynamic-datasource-version>
+        <mybatis-plus-generator>3.1.1</mybatis-plus-generator>
+        <velocity-engine-core>2.0</velocity-engine-core>
+        <mybatisplus-spring-boot-starter>1.0.5</mybatisplus-spring-boot-starter>
+        <shardingsphere.5.version>5.1.0</shardingsphere.5.version>
+        <shardingsphere.4.version>4.0.0-RC2</shardingsphere.4.version>
+        <shardingsphere.version>5.1.1</shardingsphere.version>
+    </properties>
+
+    <!-- 子模块继承之后，提供作用：锁定版本+子module不用写groupId和version  -->
+    <dependencyManagement>
+
+        <dependencies>
+            <dependency>
+                <groupId>org.apache.tomcat</groupId>
+                <artifactId>tomcat-dbcp</artifactId>
+                <version>10.0.16</version>
+            </dependency>
+            <dependency>
+                <groupId>com.baomidou</groupId>
+                <artifactId>mybatis-plus-extension</artifactId>
+                <version>${mybatis-plus.spring.boot.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.baomidou</groupId>
+                <artifactId>mybatis-plus-core</artifactId>
+                <version>${mybatis-plus.spring.boot.version}</version>
+            </dependency>
+            <!--服务监控-->
+            <!-- https://mvnrepository.com/artifact/io.prometheus/simpleclient_spring_boot -->
+            <dependency>
+                <groupId>io.prometheus</groupId>
+                <artifactId>simpleclient_spring_boot</artifactId>
+                <version>0.15.0</version>
+            </dependency>
+            <dependency>
+                <groupId>com.aliyun.oss</groupId>
+                <artifactId>aliyun-sdk-oss</artifactId>
+                <version>3.10.2</version>
+            </dependency>
+            <!--            <dependency>-->
+            <!--                <groupId>org.apache.shardingsphere</groupId>-->
+            <!--                <artifactId>sharding-jdbc-spring-boot-starter</artifactId>-->
+            <!--                <version>${shardingsphere.4.version}</version>-->
+            <!--            </dependency>-->
+            <!--            <dependency>-->
+            <!--                <groupId>org.apache.shardingsphere</groupId>-->
+            <!--                <artifactId>sharding-core-api</artifactId>-->
+            <!--                <version>${shardingsphere.4.version}</version>-->
+            <!--            </dependency>-->
+            <!--            <dependency>-->
+            <!--                <groupId>org.apache.shardingsphere</groupId>-->
+            <!--                <artifactId>sharding-jdbc-spring-namespace</artifactId>-->
+            <!--                <version>${shardingsphere.4.version}</version>-->
+            <!--            </dependency>-->
+            <dependency>
+                <groupId>org.apache.shardingsphere</groupId>
+                <artifactId>sharding-core-api</artifactId>
+                <version>${shardingsphere.4.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.shardingsphere</groupId>
+                <artifactId>shardingsphere-jdbc-core-spring-boot-starter</artifactId>
+                <version>${shardingsphere.5.version}</version>
+            </dependency>
+            <!--hutool 加密解密 https://mvnrepository.com/artifact/cn.hutool/hutool-crypto -->
+            <dependency>
+                <groupId>cn.hutool</groupId>
+                <artifactId>hutool-crypto</artifactId>
+                <version>5.7.22</version>
+            </dependency>
+            <!-- https://mvnrepository.com/artifact/com.baomidou/mybatisplus-spring-boot-starter -->
+            <dependency>
+                <groupId>com.baomidou</groupId>
+                <artifactId>mybatisplus-spring-boot-starter</artifactId>
+                <version>${mybatisplus-spring-boot-starter}</version>
+            </dependency>
+
+            <!-- Mybatis Plus 代码生成器 -->
+            <dependency>
+                <groupId>com.baomidou</groupId>
+                <artifactId>mybatis-plus-generator</artifactId>
+                <version>${mybatis-plus-generator}</version>
+            </dependency>
+            <!--动态数据源-->
+            <dependency>
+                <groupId>com.baomidou</groupId>
+                <artifactId>dynamic-datasource-spring-boot-starter</artifactId>
+                <version>${dynamic-datasource-version}</version>
+            </dependency>
+            <!-- https://mvnrepository.com/artifact/redis.clients/jedis -->
+            <dependency>
+                <groupId>redis.clients</groupId>
+                <artifactId>jedis</artifactId>
+                <version>${jedis}</version>
+            </dependency>
+            <!-- https://mvnrepository.com/artifact/org.apache.dubbo/dubbo-spring-boot-starter -->
+            <dependency>
+                <groupId>org.apache.dubbo</groupId>
+                <artifactId>dubbo-spring-boot-starter</artifactId>
+                <version>${dubbo.version}</version>
+            </dependency>
+
+            <!--sentinel-->
+            <!-- https://mvnrepository.com/artifact/com.alibaba.csp/sentinel-datasource-zookeeper -->
+            <dependency>
+                <groupId>com.alibaba.csp</groupId>
+                <artifactId>sentinel-datasource-zookeeper</artifactId>
+                <version>${sentinel.version}</version>
+            </dependency>
+            <!-- https://mvnrepository.com/artifact/com.googlecode.libphonenumber/libphonenumber -->
+            <dependency>
+                <groupId>com.googlecode.libphonenumber</groupId>
+                <artifactId>libphonenumber</artifactId>
+                <version>${libphonenumber}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>druid</artifactId>
+                <version>${druid.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.alibaba.csp</groupId>
+                <artifactId>sentinel-core</artifactId>
+                <version>${sentinel.version}</version>
+            </dependency>
+            <!-- https://mvnrepository.com/artifact/com.alibaba.csp/sentinel-cluster-server-default -->
+            <dependency>
+                <groupId>com.alibaba.csp</groupId>
+                <artifactId>sentinel-cluster-server-default</artifactId>
+                <version>${sentinel.version}</version>
+            </dependency>
+
+            <!-- https://mvnrepository.com/artifact/org.apache.curator/curator-x-discovery -->
+            <dependency>
+                <groupId>org.apache.curator</groupId>
+                <artifactId>curator-x-discovery</artifactId>
+                <version>${curator.version}</version>
+            </dependency>
+            <!-- https://mvnrepository.com/artifact/com.alibaba.csp/sentinel-apache-dubbo-adapter -->
+            <dependency>
+                <groupId>com.alibaba.csp</groupId>
+                <artifactId>sentinel-apache-dubbo-adapter</artifactId>
+                <version>${sentinel.version}</version>
+            </dependency>
+            <!-- https://mvnrepository.com/artifact/com.alibaba.csp/sentinel-transport-simple-http -->
+            <dependency>
+                <groupId>com.alibaba.csp</groupId>
+                <artifactId>sentinel-transport-simple-http</artifactId>
+                <version>${sentinel.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.curator</groupId>
+                <artifactId>curator-framework</artifactId>
+                <version>${curator.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.curator</groupId>
+                <artifactId>curator-recipes</artifactId>
+                <version>${curator.version}</version>
+            </dependency>
+            <!-- https://mvnrepository.com/artifact/org.apache.dubbo/dubbo -->
+            <dependency>
+                <groupId>org.apache.dubbo</groupId>
+                <artifactId>dubbo</artifactId>
+                <version>${dubbo.version}</version>
+            </dependency>
+            <!-- https://mvnrepository.com/artifact/org.mapstruct/mapstruct -->
+            <dependency>
+                <groupId>org.mapstruct</groupId>
+                <artifactId>mapstruct</artifactId>
+                <version>${mapstruct}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.mapstruct</groupId>
+                <artifactId>mapstruct-processor</artifactId>
+                <version>${mapstruct}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>eu.bitwalker</groupId>
+                <artifactId>UserAgentUtils</artifactId>
+                <version>${UserAgentUtils}</version>
+            </dependency>
+            <!--工具包-->
+            <dependency>
+                <groupId>cn.hutool</groupId>
+                <artifactId>hutool-all</artifactId>
+                <version>${hutool-all}</version>
+            </dependency>
+            <!-- https://mvnrepository.com/artifact/cn.hutool/hutool-core -->
+            <dependency>
+                <groupId>cn.hutool</groupId>
+                <artifactId>hutool-core</artifactId>
+                <version>${hutool-core}</version>
+            </dependency>
+
+            <!-- https://mvnrepository.com/artifact/com.xiaoleilu/hutool-json -->
+            <dependency>
+                <groupId>com.xiaoleilu</groupId>
+                <artifactId>hutool-json</artifactId>
+                <version>${hutool-json}</version>
+            </dependency>
+            <!-- https://mvnrepository.com/artifact/cn.hutool/hutool-http -->
+            <dependency>
+                <groupId>cn.hutool</groupId>
+                <artifactId>hutool-http</artifactId>
+                <version>${hutool-http}</version>
+            </dependency>
+            <!-- https://mvnrepository.com/artifact/com.netflix.hystrix/hystrix-core -->
+            <dependency>
+                <groupId>com.netflix.hystrix</groupId>
+                <artifactId>hystrix-core</artifactId>
+                <version>${hystrix-core}</version>
+            </dependency>
+
+            <!--图形验证码-->
+            <dependency>
+                <groupId>com.github.whvcse</groupId>
+                <artifactId>easy-captcha</artifactId>
+                <version>${easy-captcha}</version>
+            </dependency>
+            <!-- https://mvnrepository.com/artifact/org.json/json -->
+            <dependency>
+                <groupId>org.json</groupId>
+                <artifactId>json</artifactId>
+                <version>${org.json.json}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.qcloud</groupId>
+                <artifactId>cos-sts_api</artifactId>
+                <version>${com.qcloud.cos-sts_api.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.qcloud</groupId>
+                <artifactId>cos_api</artifactId>
+                <version>${com.qcloud.cos_api.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.alicp.jetcache</groupId>
+                <artifactId>jetcache-starter-redis</artifactId>
+                <version>${jetcache-starter-redis}</version>
+            </dependency>
+            <!-- https://mvnrepository.com/artifact/com.github.tobato/fastdfs-client -->
+            <dependency>
+                <groupId>com.github.tobato</groupId>
+                <artifactId>fastdfs-client</artifactId>
+                <version>${com.github.tobato-fastdfs-client}</version>
+            </dependency>
+            <dependency>
+                <groupId>commons-beanutils</groupId>
+                <artifactId>commons-beanutils</artifactId>
+                <version>${apache-common-beanutils}</version>
+            </dependency>
+            <!--                        <dependency>-->
+            <!--                            <groupId>com.echao</groupId>-->
+            <!--                            <artifactId>study-common-api</artifactId>-->
+            <!--                            <version>1.0</version>-->
+            <!--                            <scope>system</scope>-->
+            <!--                            <systemPath>/Users/yichenkang/IdeaProjects/studyIcuPlatform/study-common-api/target/study-common-api-1.0.jar</systemPath>-->
+            <!--                        </dependency>-->
+            <dependency>
+                <groupId>com.tencentcloudapi</groupId>
+                <artifactId>tencentcloud-sdk-java</artifactId>
+                <!-- go to https://search.maven.org/search?q=tencentcloud-sdk-java and get the latest version. -->
+                <!-- 请到https://search.maven.org/search?q=tencentcloud-sdk-java查询所有版本，最新版本如下 -->
+                <version>${tencentcloud-sdk-java-version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.slf4j</groupId>
+                <artifactId>slf4j-api</artifactId>
+                <version>${lf4j-api.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>commons-logging</groupId>
+                <artifactId>commons-logging</artifactId>
+                <version>${commons-logging.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-dependencies</artifactId>
+                <version>${spring-boot-dependencies.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <version>${spring-cloud-dependencies.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <dependency>
+                <groupId>com.alibaba.cloud</groupId>
+                <artifactId>spring-cloud-alibaba-dependencies</artifactId>
+                <version>${spring-cloud-alibaba-dependencies.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <dependency>
+                <groupId>mysql</groupId>
+                <artifactId>mysql-connector-java</artifactId>
+                <version>${mysql.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.velocity</groupId>
+                <artifactId>velocity-engine-core</artifactId>
+                <version>${velocity-engine-core}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.baomidou</groupId>
+                <artifactId>mybatis-plus-boot-starter</artifactId>
+                <version>${mybatis-plus.spring.boot.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>junit</groupId>
+                <artifactId>junit</artifactId>
+                <version>${junit.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.projectlombok</groupId>
+                <artifactId>lombok</artifactId>
+                <version>${lombok.version}</version>
+                <optional>true</optional>
+            </dependency>
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>fastjson</artifactId>
+                <version>${fastjson.version}</version>
+                <scope>compile</scope>
+            </dependency>
+            <!-- https://mvnrepository.com/artifact/com.auth0/java-jwt -->
+            <dependency>
+                <groupId>com.auth0</groupId>
+                <artifactId>java-jwt</artifactId>
+                <version>${java-jwt.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.springfox</groupId>
+                <artifactId>springfox-swagger-ui</artifactId>
+                <version>${springfox-swagger-ui.version}</version>
+            </dependency>
+            <!-- https://mvnrepository.com/artifact/io.springfox/springfox-swagger2 -->
+            <dependency>
+                <groupId>io.springfox</groupId>
+                <artifactId>springfox-swagger2</artifactId>
+                <version>${springfox-swagger2.version}</version>
+            </dependency>
+            <!--美化swagger-->
+            <dependency>
+                <groupId>com.github.xiaoymin</groupId>
+                <artifactId>swagger-bootstrap-ui</artifactId>
+                <version>${swagger-bootstrap-ui-github.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.mobile</groupId>
+                <artifactId>spring-mobile-device</artifactId>
+                <version>${spring-mobile-device.version}</version>
+            </dependency>
+            <!-- 高版本redis的lettuce需要commons-pool2 -->
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-pool2</artifactId>
+                <version>${commons-pool2.version}</version>
+            </dependency>
+            <!-- java发送邮件jar包 -->
+            <dependency>
+                <groupId>javax.mail</groupId>
+                <artifactId>javax.mail-api</artifactId>
+                <version>${java-mail.version}</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    <dependencies>
+
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-web</artifactId>
+        </dependency>
+
+    </dependencies>
+
+    <build>
+
+    </build>
+
+
+</project>
+
